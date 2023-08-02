@@ -2,4 +2,4 @@
 
 Spring Boot Projects
 
-* [Simple Todo App](todo/)
+* [Simple Todo App (REST API)](todo/)
