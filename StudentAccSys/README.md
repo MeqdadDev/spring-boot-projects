@@ -6,6 +6,7 @@ This is an API endpoints for a simple student account management system built wi
 
 * Database: PostgreSQL
 * Backend: Spring Boot using Java
+* ORM: Hibernate
 * Project Management Tool: Maven
 
 
