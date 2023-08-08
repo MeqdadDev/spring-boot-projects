@@ -1,6 +1,6 @@
 # Student Account Management System using Spring Boot Framework
 
-This is an API endpoints for a simple student account management system built with Spring Boot framework.
+These are the API endpoints for a simple student account management system built with the Spring Boot framework.
 
 ### Technical Stack:
 
