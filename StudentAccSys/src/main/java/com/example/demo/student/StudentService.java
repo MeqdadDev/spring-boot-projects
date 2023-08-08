@@ -17,14 +17,27 @@ public class StudentService {
 
     public void addNewStudent(Student student) {
         Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+        if (studentOptional.isPresent()){
+            throw new IllegalStateException("Email taken");
+        }
+        studentRepository.save(student);
+
+//        Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
 //        if (studentOptional.isPresent()){
 //            throw new IllegalStateException("Email taken");
 //        }
-        studentRepository.save(student);
     }
 
     public List<Student> getStudents(){
         return studentRepository.findAll();
+    }
+
+    public void deleteStudent(Long studentId){
+        boolean exists = studentRepository.existsById(studentId);
+        if (!exists){
+            throw new IllegalStateException("Student ID " + studentId + " does not exists.");
+        }
+        studentRepository.deleteById(studentId);
     }
 
     
