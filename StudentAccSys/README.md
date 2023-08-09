@@ -73,6 +73,40 @@ Body Example:
 ```
 
 
+#### Update Student
+
+```http
+  PUT /api/v1/student/{studentId}?name={NewName}
+```
+
+```http
+  PUT /api/v1/student/{studentId}?email={newEmail}
+```
+
+```http
+  PUT /api/v1/student/{studentId}?name={NewName}&email={newEmail}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `integer` | **Required**. Student ID |
+| `name`      | `String` | **Optional**   |
+| `email`      | `String` | **Optional**   |
+
+Examples:
+
+```http
+  PUT /api/v1/student/3?name=Noor
+```
+
+```http
+  PUT /api/v1/student/3?email=nooooor@mail.com
+```
+
+```http
+  PUT /api/v1/student/3?name=Noor&email=nooooor@mail.com
+```
+
 #### Delete Student
 
 ```http
