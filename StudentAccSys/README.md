@@ -89,7 +89,7 @@ Body Example:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `integer` | **Required**. Student ID |
+| `id`      | `integer` | **Required**  |
 | `name`      | `String` | **Optional**   |
 | `email`      | `String` | **Optional**   |
 
@@ -115,7 +115,7 @@ Examples:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `integer` | **Required**. ID of student |
+| `id`      | `integer` | **Required**  |
 
 Example:
 ```http
