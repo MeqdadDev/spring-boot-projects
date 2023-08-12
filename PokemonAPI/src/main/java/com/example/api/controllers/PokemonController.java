@@ -1,5 +1,6 @@
 package com.example.api.controllers;
 
+import com.example.api.dto.GetAllPokemonResponse;
 import com.example.api.dto.PokemonDto;
 import com.example.api.models.Pokemon;
 import com.example.api.services.PokemonService;
@@ -22,8 +23,10 @@ public class PokemonController {
     }
 
     @GetMapping("/pokemon")
-    public ResponseEntity<List<PokemonDto>> getAllPokemons(){
-        return new ResponseEntity<>(pokemonService.getAllPokemons(), HttpStatus.OK);
+    public ResponseEntity<GetAllPokemonResponse> getAllPokemons(
+            @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize){
+        return new ResponseEntity<>(pokemonService.getAllPokemons(pageNo, pageSize), HttpStatus.OK);
     }
 //    OR....
     /*@GetMapping("pokemon")

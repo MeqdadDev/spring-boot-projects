@@ -1,11 +1,12 @@
 package com.example.api.services;
 
+import com.example.api.dto.GetAllPokemonResponse;
 import com.example.api.dto.PokemonDto;
 
 import java.util.List;
 
 public interface PokemonService {
-    List <PokemonDto> getAllPokemons();
+    GetAllPokemonResponse getAllPokemons(int pageNo, int pageSize);
     PokemonDto createPokemon(PokemonDto pokemonDto);
 
     PokemonDto getPokemonById(int pokemonId);
