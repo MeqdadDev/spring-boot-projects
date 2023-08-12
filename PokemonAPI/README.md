@@ -8,7 +8,10 @@ These are the API endpoints for Pokemon API built with the Spring Boot framework
 * Backend: Spring Boot using Java
 * ORM: Hibernate
 * Project Management Tool: Maven
-
+* Features:
+	- Basic CRUD Operations
+	- Pagination
+	- Exception Handling
 
 ### Data Models:
 
@@ -28,28 +31,51 @@ These are the API endpoints for Pokemon API built with the Spring Boot framework
 #### Get All Pokemons
 
 ```http
-  GET /api/v1/pokemon
+  GET /api/v1/pokemon?pageNo={PageNumber}&pageSize={PageSize}
+```
+_Default Values:_ `pageNo=0, pageSize=10`
+
+Example:
+```http
+  GET /api/v1/pokemon?pageNo=0&pageSize=5
 ```
 
 Response Example:
 ```json
-[
-	{
-		"id": 1,
-		"name": "Bulbasaur",
-		"type": "Grass"
-	},
-	{
-		"id": 2,
-		"name": "Squirtle",
-		"type": "Water"
-	},
-	{
-		"id": 3,
-		"name": "Pidgey",
-		"type": "Earth"
-	}
-]
+{
+	"content": [
+		{
+			"id": 1,
+			"name": "Bulbasaur",
+			"type": "Grass"
+		},
+		{
+			"id": 2,
+			"name": "Squirtle",
+			"type": "Water"
+		},
+		{
+			"id": 3,
+			"name": "Pidgey",
+			"type": "Earth"
+		},
+		{
+			"id": 5,
+			"name": "Squirtle 2",
+			"type": "Water"
+		},
+		{
+			"id": 6,
+			"name": "Squirtle 3",
+			"type": "Water"
+		}
+	],
+	"pageNo": 0,
+	"pageSize": 5,
+	"totalElements": 11,
+	"totalPages": 3,
+	"last": false
+}
 ```
 
 #### Add Pokemon
