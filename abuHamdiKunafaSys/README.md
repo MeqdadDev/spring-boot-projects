@@ -2,7 +2,8 @@
 
 Orders Management System for Abu Hamdi Kunafa at Ramallah.
 
-Expected features:
+### Expected features:
+
     - View Kunafa Orders
     - Create Kunafa Order
     - Update Kunafa Order
