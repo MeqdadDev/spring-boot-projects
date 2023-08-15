@@ -12,4 +12,6 @@ public class ContactInfoDto {
     private String whatsAppNumber;
     private String instagramProfile;
     private String facebookProfile;
+
+    private CustomerDto customer;
 }

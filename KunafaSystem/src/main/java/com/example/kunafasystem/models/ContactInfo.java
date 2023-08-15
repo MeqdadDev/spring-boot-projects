@@ -1,9 +1,6 @@
 package com.example.kunafasystem.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ContactInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String phoneNumber;
     private String city;
@@ -24,5 +21,20 @@ public class ContactInfo {
     private String instagramProfile;
     private String facebookProfile;
 
-//    Lombok is responsible for Setters & Getters
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    public ContactInfo(String phoneNumber, String city, String street, long buildingNo, String whatsAppNumber, String instagramProfile, String facebookProfile, Customer customer) {
+        this.phoneNumber = phoneNumber;
+        this.city = city;
+        this.street = street;
+        this.buildingNo = buildingNo;
+        this.whatsAppNumber = whatsAppNumber;
+        this.instagramProfile = instagramProfile;
+        this.facebookProfile = facebookProfile;
+        this.customer = customer;
+    }
+
+    //    Lombok is responsible for Setters & Getters
 }
