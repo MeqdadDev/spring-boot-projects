@@ -137,3 +137,29 @@ Example:
   DELETE /api/v1/pokemon/4
 ```
 
+### CRUD Operations on Review
+
+#### Get Reviews for a Pokemon
+
+```http
+  GET /api/v1/pokemon/{pokemonId}/review
+```
+
+Example:
+```http
+  GET /api/v1/pokemon/2/reviews
+```
+
+Response Example:
+```json
+[
+	{
+		"id": 3,
+		"title": "best review",
+		"content": "it is the best pokemon ever",
+		"stars": 5
+	}
+]
+```
+
+#### Add Review
