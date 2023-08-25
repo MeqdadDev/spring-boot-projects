@@ -2,6 +2,7 @@ package com.example.api.services.Implementations;
 
 import com.example.api.dto.ReviewDto;
 import com.example.api.exceptions.PokemonNotFoundException;
+import com.example.api.exceptions.ReviewNotFoundException;
 import com.example.api.models.Pokemon;
 import com.example.api.models.Review;
 import com.example.api.repository.PokemonRepository;
@@ -42,6 +43,21 @@ public class ReviewServiceImplementation implements ReviewService {
         List<Review> reviews = reviewRepository.findByPokemonId(id);
 
         return  reviews.stream().map(review -> reviewToDtoMapper(review)).collect(Collectors.toList());
+    }
+
+    @Override
+    public ReviewDto getReviewById(int reviewId, int pokemonId) {
+        Pokemon pokemon = pokemonRepository.findById(pokemonId)
+                .orElseThrow(() -> new PokemonNotFoundException("Pokemon with associated review not found"));
+
+        Review review = reviewRepository.findById(reviewId)
+                .orElseThrow(() -> new ReviewNotFoundException("Review not found"));
+
+        if(review.getPokemon().getId() != pokemon.getId()){
+            throw new ReviewNotFoundException("This review doesn't belong to a pokemon");
+        }
+
+        return reviewToDtoMapper(review);
     }
 
     private ReviewDto reviewToDtoMapper(Review review){
