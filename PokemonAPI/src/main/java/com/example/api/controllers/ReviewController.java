@@ -20,7 +20,8 @@ public class ReviewController {
     }
 
     @PostMapping("/pokemon/{pokemonId}/review")
-    public ResponseEntity<ReviewDto> createReview(@PathVariable(value = "pokemonId") int pokemonId, @RequestBody ReviewDto reviewDto){
+    public ResponseEntity<ReviewDto> createReview(@PathVariable(value = "pokemonId") int pokemonId,
+                                                  @RequestBody ReviewDto reviewDto){
         return new ResponseEntity<>(reviewService.createReview(pokemonId, reviewDto), HttpStatus.CREATED);
     }
 
@@ -30,9 +31,28 @@ public class ReviewController {
     }
 
     @GetMapping("/pokemon/{pokemonId}/reviews/{reviewId}")
-    public ResponseEntity<ReviewDto> getReviewById(@PathVariable(value = "pokemonId") int pokemonId, @PathVariable(value = "reviewId") int reviewId){
+    public ResponseEntity<ReviewDto> getReviewById(@PathVariable(value = "pokemonId") int pokemonId,
+                                                   @PathVariable(value = "reviewId") int reviewId){
         ReviewDto reviewDto = reviewService.getReviewById(pokemonId, reviewId);
 
         return  new ResponseEntity<>(reviewDto, HttpStatus.OK);
     }
+
+    @PutMapping("/pokemon/{pokemonId}/reviews/{reviewId}")
+    public ResponseEntity<ReviewDto> updateReviewById(@PathVariable(value = "pokemonId") int pokemonId,
+                                                      @PathVariable(value = "reviewId") int reviewId,
+                                                      @RequestBody ReviewDto reviewDto){
+        ReviewDto updatedReview = reviewService.updateReview(pokemonId, reviewId, reviewDto);
+
+        return new ResponseEntity<>(updatedReview, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/pokemon/{pokemonId}/reviews/{reviewId}")
+    public ResponseEntity<String> deleteReviewById(@PathVariable(value = "pokemonId") int pokemonId,
+                                                   @PathVariable(value = "reviewId") int reviewId){
+        reviewService.deleteReview(pokemonId, reviewId);
+
+        return ResponseEntity.ok("Review with ID " + reviewId + " deleted successfully.");
+    }
+
 }

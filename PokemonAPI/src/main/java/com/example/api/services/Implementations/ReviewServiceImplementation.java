@@ -53,11 +53,47 @@ public class ReviewServiceImplementation implements ReviewService {
         Review review = reviewRepository.findById(reviewId)
                 .orElseThrow(() -> new ReviewNotFoundException("Review not found"));
 
-        if(review.getPokemon().getId() != pokemon.getId()){
+        if (review.getPokemon().getId() != pokemon.getId()){
             throw new ReviewNotFoundException("This review doesn't belong to a pokemon");
         }
 
         return reviewToDtoMapper(review);
+    }
+
+    @Override
+    public ReviewDto updateReview(int pokemonId, int reviewId, ReviewDto reviewDto) {
+        Pokemon pokemon = pokemonRepository.findById(pokemonId)
+                .orElseThrow(() -> new PokemonNotFoundException("Pokemon with associated review not found"));
+
+        Review review = reviewRepository.findById(reviewId)
+                .orElseThrow(() -> new ReviewNotFoundException("Review not found"));
+
+        if (review.getPokemon().getId() != pokemon.getId()){
+            throw new ReviewNotFoundException("This review doesn't belong to a pokemon");
+        }
+
+        review.setTitle(reviewDto.getTitle());
+        review.setContent(reviewDto.getContent());
+        review.setStars(reviewDto.getStars());
+
+        Review updateReview = reviewRepository.save(review);
+
+        return reviewToDtoMapper(updateReview);
+    }
+
+    @Override
+    public void deleteReview(int pokemonId, int reviewId) {
+        Pokemon pokemon = pokemonRepository.findById(pokemonId)
+                .orElseThrow(() -> new PokemonNotFoundException("Pokemon with associated review not found"));
+
+        Review review = reviewRepository.findById(reviewId)
+                .orElseThrow(() -> new ReviewNotFoundException("Review not found"));
+
+        if (review.getPokemon().getId() != pokemon.getId()){
+            throw new ReviewNotFoundException("This review doesn't belong to a pokemon");
+        }
+
+        reviewRepository.delete(review);
     }
 
     private ReviewDto reviewToDtoMapper(Review review){

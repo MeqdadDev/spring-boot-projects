@@ -2,14 +2,11 @@ package com.example.api.controllers;
 
 import com.example.api.dto.GetAllPokemonResponse;
 import com.example.api.dto.PokemonDto;
-import com.example.api.models.Pokemon;
 import com.example.api.services.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -54,7 +51,8 @@ public class PokemonController {
     }
 
     @PutMapping("/pokemon/{pokemonId}")
-    public ResponseEntity<PokemonDto> updatePokemon(@PathVariable("pokemonId") int pokemonId, @RequestBody PokemonDto pokemonDto){
+    public ResponseEntity<PokemonDto> updatePokemon(@PathVariable("pokemonId") int pokemonId,
+                                                    @RequestBody PokemonDto pokemonDto){
         PokemonDto response = pokemonService.updatePokemon(pokemonDto, pokemonId);
         return new  ResponseEntity<>(response, HttpStatus.OK);
     }
