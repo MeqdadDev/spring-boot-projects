@@ -28,6 +28,7 @@ These are the API endpoints for Pokemon API built with the Spring Boot framework
 ## API Reference
 
 ### CRUD Operations on Pokemon
+
 #### Get All Pokemons
 
 ```http
@@ -35,7 +36,8 @@ These are the API endpoints for Pokemon API built with the Spring Boot framework
 ```
 _Default Values:_ `pageNo=0, pageSize=10`
 
-Example:
+Request Example:
+
 ```http
   GET /api/v1/pokemon?pageNo=0&pageSize=5
 ```
@@ -80,15 +82,18 @@ Response Example:
 
 #### Add Pokemon
 
+
 ```http
   POST /api/v1/pokemon
 ```
+
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `name`      | `String` | **Required** |
 | `type`      | `String` | **Required** |
 
 Body Example:
+
 ```json
 {
 	"name": "Pikachu",
@@ -108,7 +113,7 @@ Body Example:
 | `name`      | `String` | **Required**  |
 | `type`      | `integer` | **Required** |
 
-Examples:
+Request Example:
 
 ```http
   PUT /api/v1/pokemon/3
@@ -128,16 +133,16 @@ Body Example:
   DELETE /api/v1/pokemon/{pokemonId}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `integer` | **Required** |
+Request Example:
 
-Example:
 ```http
   DELETE /api/v1/pokemon/4
 ```
 
+---------------------
+
 ### CRUD Operations on Review
+
 
 #### Get Reviews for a Pokemon
 
@@ -145,7 +150,8 @@ Example:
   GET /api/v1/pokemon/{pokemonId}/review
 ```
 
-Example:
+Request Example:
+
 ```http
   GET /api/v1/pokemon/2/reviews
 ```
@@ -163,3 +169,94 @@ Response Example:
 ```
 
 #### Add Review
+
+```http
+  POST /api/v1/pokemon/{pokemonId}/review
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `title`      | `String`  | **Required**  |
+| `content`    | `String`  | **Required** |
+| `stars`      | `integer` | **Required** |
+
+
+Body Example:
+```json
+{
+	"title": "bad review",
+	"content": "worst pokemon ever",
+	"stars": 1
+}
+```
+
+Request Example:
+
+```http
+  POST /api/v1/pokemon/1/review
+```
+
+
+#### Get a Specific Review
+
+```http
+  GET /api/v1/pokemon/{pokemonId}/reviews/{reviewId}
+```
+
+Request Example:
+
+```http
+  GET /api/v1/pokemon/1/reviews/1
+```
+
+Response Example:
+
+```json
+{
+	"id": 1,
+	"title": "normal review",
+	"content": "it is a normal pokemon, overrated",
+	"stars": 3
+}
+```
+
+#### Update Review
+
+```http
+  PUT /api/v1/pokemon/{pokemonId}/reviews/{reviewId}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `title`      | `String`  | **Required** |
+| `content`    | `String`  | **Required** |
+| `stars`      | `integer` | **Required** |
+
+
+Body Example:
+
+```json
+{
+	"title": "best review",
+	"content": "best pokemon ever",
+	"stars": 5
+}
+```
+
+Request Example:
+
+```http
+  PUT /api/v1/pokemon/1/reviews/2
+```
+
+#### Delete Review
+
+```http
+  DELETE /api/v1/pokemon/{pokemonId}/reviews/{reviewId}
+```
+
+Request Example:
+```http
+  DELETE /api/v1/pokemon/2/reviews/3
+```
+
