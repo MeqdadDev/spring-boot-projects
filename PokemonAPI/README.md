@@ -12,6 +12,7 @@ These are the API endpoints for Pokemon API built with the Spring Boot framework
 	- Basic CRUD Operations
 	- Pagination
 	- Exception Handling
+	- Authentication and Authorization (Spring Security)
 
 ### Data Models:
 
