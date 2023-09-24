@@ -1,4 +1,4 @@
-package com.springprojects.security.auth;
+package com.springprojects.security.controller.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

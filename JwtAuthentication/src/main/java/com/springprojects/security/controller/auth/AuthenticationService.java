@@ -1,4 +1,4 @@
-package com.springprojects.security.auth;
+package com.springprojects.security.controller.auth;
 
 import com.springprojects.security.config.JwtService;
 import com.springprojects.security.user.Role;
