@@ -12,7 +12,7 @@ These are the API endpoints for Pokemon API built with the Spring Boot framework
 	- Basic CRUD Operations
 	- Pagination
 	- Exception Handling
-	- Authentication and Authorization (Spring Security)
+	- Authentication and Authorization (Spring Security with JWT)
 
 ### Data Models:
 
@@ -261,3 +261,12 @@ Request Example:
   DELETE /api/v1/pokemon/2/reviews/3
 ```
 
+---------------------
+
+### Authentication and JWT
+
+#### Register User
+
+```http
+  POST /api/v1/auth/register
+```
