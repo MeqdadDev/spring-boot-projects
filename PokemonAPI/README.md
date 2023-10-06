@@ -265,8 +265,14 @@ Request Example:
 
 ### Authentication and JWT
 
-#### Register User
+#### User Registration
 
 ```http
   POST /api/v1/auth/register
+```
+
+#### User Login
+
+```http
+  POST /api/v1/auth/login
 ```
