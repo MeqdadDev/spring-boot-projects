@@ -7,4 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
 public interface TodoRepository extends MongoRepository<Todo, String> {
+
+    Todo findByTitle(String title);
 }

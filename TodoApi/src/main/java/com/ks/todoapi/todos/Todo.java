@@ -1,5 +1,6 @@
 package com.ks.todoapi.todos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.springframework.data.annotation.Id;
@@ -11,12 +12,14 @@ public class Todo {
     @Id
     private String id;
 
-    @NotNull(message = "Required, not Null")
+    @NotNull(message = "Title is required, not Null")
     @Size(min = 3, message = "At least 3 characters")
     private String title;
 
-    @NotNull(message = "Description is required")
+    @NotNull(message = "Description is required, not Null")
     private String description;
+
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private long timestamp;
 
     public Todo(){
