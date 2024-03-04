@@ -5,6 +5,7 @@ Spring Boot Projects
 * [Todo App 1 (REST API)](TodoApi/)
 * [Todo App 2 (REST API)](todo/)
 * [Student Account Management System (REST API)](StudentAccSys/)
-* [User Registration and Login with JWT Authentication](JwtAuthentication/)
+* [User Login System with JWT Authentication](LoginAPI/) (Spring Security 6)
+* [User Registration and Login with JWT Authentication 2](JwtAuthentication/)
 * [Pokemon API](PokemonAPI/)
 * [Abu Hamdi Kunafa Orders System (SOoOn)](KunafaSystem/)
