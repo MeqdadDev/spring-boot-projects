@@ -2,6 +2,7 @@ package com.meqdaddev.loginapi.services;
 
 import com.meqdaddev.loginapi.models.ApplicationUser;
 import com.meqdaddev.loginapi.models.Role;
+import com.meqdaddev.loginapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,13 +19,13 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("In the user details service");
 
-        if (!username.equals("Meqdad")) throw new UsernameNotFoundException("Not Meqdad");
-        Set<Role> roles = new HashSet<>();
-        roles.add(new Role(1, "USER"));
-        return new ApplicationUser(1, "Meqdad", passwordEncoder.encode("password"), roles);
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("user is not valid"));
     }
 }
