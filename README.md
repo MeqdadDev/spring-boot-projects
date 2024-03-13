@@ -8,4 +8,5 @@ Spring Boot Projects
 * [User Login System with JWT Authentication](LoginAPI/) (Spring Security 6)
 * [User Registration and Login with JWT Authentication](JwtAuthentication/)
 * [Pokemon API](PokemonAPI/)
+* [Event Management System](https://github.com/MeqdadDev/event-system-spring-boot)
 * [Abu Hamdi Kunafa Orders System (SOoOn)](KunafaSystem/)
